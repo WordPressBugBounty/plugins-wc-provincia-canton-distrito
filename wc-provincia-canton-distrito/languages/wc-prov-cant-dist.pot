@@ -1,0 +1,144 @@
+# Copyright (C) 2022 Keylor Mendoza A.
+# This file is distributed under the same license as the WC Provincia-Canton-Distrito plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: WC Provincia-Canton-Distrito 1.4.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-provincia-canton-distrito\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-06-24T06:35:13+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: wc-prov-cant-dist\n"
+
+#. Plugin Name of the plugin
+msgid "WC Provincia-Canton-Distrito"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://keylormendoza.com/woocommerce/wc-provincia-canton-distrito/"
+msgstr ""
+
+#. Description of the plugin
+#: includes/wcpcd-class.php:15
+msgid "This plugin allows you to populate your custom states, cities, and postcodes for WooCommerce. It started working only for Costa Rica but now it is compatible with multi countries."
+msgstr ""
+
+#. Author of the plugin
+msgid "Keylor Mendoza A."
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.keylormendoza.com"
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:2
+#: includes/wcpcd-class.php:304
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:8
+msgid "Remove priority on the Checkout"
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:11
+#: includes/admin/wcpcd-settings.php:20
+#: includes/admin/wcpcd-settings.php:29
+#: includes/admin/wcpcd-settings.php:38
+#: includes/admin/wcpcd-settings.php:47
+msgid "Yes"
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:13
+msgid "It continues using the WooCommerce priority and labels for the fields state, city, address_1, address_2."
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:17
+msgid "Hide postcode"
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:22
+msgid "It hides de postcode field on the Checkout and shipping calculator form."
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:26
+msgid "Set an empty State"
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:31
+msgid "It adds an empty field to province dropdown to force the customers to choose a province."
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:35
+msgid "Set an empty City-District"
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:40
+msgid "Leave the field City-District empty after the province is selected. Otherwise, first option is selected."
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:44
+msgid "Debug JS"
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:49
+msgid "It prints the .js on production. Default prints .min.js."
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:53
+msgid "Locations"
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:58
+msgid "Optional, add a formatted JSON of locations to override the ones loaded from the file."
+msgstr ""
+
+#. translators: %s Version of the plugin
+#: includes/admin/wcpcd-settings.php:64
+msgid "Current version: %s"
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:70
+msgid "Testing JSON of Locations"
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:71
+msgid "Shows the current locations loaded into the WC dropdowns."
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:79
+msgid "Locations loading from settings of the plugin"
+msgstr ""
+
+#. translators: %1$s Plugin file path, %2$s Theme file path
+#: includes/admin/wcpcd-settings.php:91
+msgid "The locations couldn't be loaded to your site. Move the file %1$s from the plugin to your theme or child theme in %2$s. Then, add the snippet below to override the locations."
+msgstr ""
+
+#: includes/wcpcd-admin.php:16
+#: includes/wcpcd-class.php:219
+msgid "State"
+msgstr ""
+
+#: includes/wcpcd-admin.php:23
+#: includes/wcpcd-class.php:220
+msgid "City-District"
+msgstr ""
+
+#: includes/wcpcd-admin.php:27
+#: includes/wcpcd-class.php:75
+#: includes/wcpcd-class.php:221
+msgid "Choose a city"
+msgstr ""
+
+#: includes/wcpcd-class.php:96
+msgid "Choose a state"
+msgstr ""
+
+#. translators: %1$s Plugin name, %2$s Open a tag, %3$s Close a tag
+#: wc-prov-cant-dist.php:49
+msgid "%1$s requires %2$sWooCommerce%3$s to be active."
+msgstr ""

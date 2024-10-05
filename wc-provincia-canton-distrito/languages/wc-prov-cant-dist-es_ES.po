@@ -1,0 +1,173 @@
+# Copyright (C) 2020 Keylor Mendoza A.
+# This file is distributed under the same license as the WC Provincia-Canton-Distrito plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: WC Provincia-Canton-Distrito 1.4.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-provincia-"
+"canton-distrito\n"
+"POT-Creation-Date: 2022-06-24T06:35:13+00:00\n"
+"PO-Revision-Date: 2022-06-24 20:39-0600\n"
+"Last-Translator: Keylor Mendoza A. <me@keylormendoza.com>\n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Domain: wc-prov-cant-dist\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Plugin Name of the plugin
+msgid "WC Provincia-Canton-Distrito"
+msgstr "WC Provincia-Cantón-Distrito"
+
+#. Plugin URI of the plugin
+msgid "https://keylormendoza.com/woocommerce/wc-provincia-canton-distrito/"
+msgstr ""
+
+#. Description of the plugin
+#: includes/wcpcd-class.php:15
+msgid ""
+"This plugin allows you to populate your custom states, cities, and postcodes "
+"for WooCommerce. It started working only for Costa Rica but now it is "
+"compatible with multi countries."
+msgstr ""
+"Este plugin permite mostrar Provincias, cantones, distritos y postcodes para "
+"WooCommerce. Inició trabajando solo para Costa Rica pero ahora es compatible "
+"para diferentes países."
+
+#. Author of the plugin
+msgid "Keylor Mendoza A."
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.keylormendoza.com"
+msgstr ""
+
+#: includes/admin/wcpcd-settings.php:2 includes/wcpcd-class.php:304
+msgid "Settings"
+msgstr "Ajustes"
+
+#: includes/admin/wcpcd-settings.php:8
+msgid "Remove priority on the Checkout"
+msgstr "Quitar prioridad en Checkout"
+
+#: includes/admin/wcpcd-settings.php:11 includes/admin/wcpcd-settings.php:20
+#: includes/admin/wcpcd-settings.php:29 includes/admin/wcpcd-settings.php:38
+#: includes/admin/wcpcd-settings.php:47
+msgid "Yes"
+msgstr "Sí"
+
+#: includes/admin/wcpcd-settings.php:13
+msgid ""
+"It continues using the WooCommerce priority and labels for the fields state, "
+"city, address_1, address_2."
+msgstr ""
+"Continúa usando la prioridad y etiquetas para los campos state, city, "
+"address_1, address_2."
+
+#: includes/admin/wcpcd-settings.php:17
+msgid "Hide postcode"
+msgstr "Ocultar postcode"
+
+#: includes/admin/wcpcd-settings.php:22
+msgid ""
+"It hides de postcode field on the Checkout and shipping calculator form."
+msgstr ""
+"Oculta el campo de postcode en el Checkout y el formulario de cálculo de "
+"envío."
+
+#: includes/admin/wcpcd-settings.php:26
+msgid "Set an empty State"
+msgstr "Agregar una Provincia vacía"
+
+#: includes/admin/wcpcd-settings.php:31
+msgid ""
+"It adds an empty field to province dropdown to force the customers to choose "
+"a province."
+msgstr ""
+"Agrega un campo vacío al selector de provincias para forzar a los clientes a "
+"elegir una provincia."
+
+#: includes/admin/wcpcd-settings.php:35
+msgid "Set an empty City-District"
+msgstr "Agregar un Cantón-Distrito vacío"
+
+#: includes/admin/wcpcd-settings.php:40
+msgid ""
+"Leave the field City-District empty after the province is selected. "
+"Otherwise, first option is selected."
+msgstr ""
+"Mantener el campo Cantón-Distrito vacío luego de la selección de provincia. "
+"De lo contrario, la primer opción será seleccionada."
+
+#: includes/admin/wcpcd-settings.php:44
+msgid "Debug JS"
+msgstr "Debug JS"
+
+#: includes/admin/wcpcd-settings.php:49
+msgid "It prints the .js on production. Default prints .min.js."
+msgstr "Imprime el .js en producción. Predeterminado se imprime .min.js."
+
+#: includes/admin/wcpcd-settings.php:53
+msgid "Locations"
+msgstr "Ubicaciones"
+
+#: includes/admin/wcpcd-settings.php:58
+msgid ""
+"Optional, add a formatted JSON of locations to override the ones loaded from "
+"the file."
+msgstr ""
+"Opcional, agregue el JSON de ubicaciones para sobrescribir las cargadas "
+"desde el archivo de ubicaciones."
+
+#. translators: %s Version of the plugin
+#: includes/admin/wcpcd-settings.php:64
+msgid "Current version: %s"
+msgstr "Versión actual: %s"
+
+#: includes/admin/wcpcd-settings.php:70
+msgid "Testing JSON of Locations"
+msgstr "JSON de ubicaciones"
+
+#: includes/admin/wcpcd-settings.php:71
+msgid "Shows the current locations loaded into the WC dropdowns."
+msgstr ""
+"Muestra las ubicaciones que actualmente se cargan en los desplegables de WC."
+
+#: includes/admin/wcpcd-settings.php:79
+msgid "Locations loading from settings of the plugin"
+msgstr "Ubicaciones cargadas desde las opciones del plugin"
+
+#. translators: %1$s Plugin file path, %2$s Theme file path
+#: includes/admin/wcpcd-settings.php:91
+msgid ""
+"The locations couldn't be loaded to your site. Move the file %1$s from the "
+"plugin to your theme or child theme in %2$s. Then, add the snippet below to "
+"override the locations."
+msgstr ""
+"Las ubicaciones no se pueden cargar a este sitio. Mover el archivo %1$s "
+"desde el plugin al tema o tema hijo en %2$s. Luego, agregue el snippet de "
+"abajo para sobrescribir las ubicaciones."
+
+#: includes/wcpcd-admin.php:16 includes/wcpcd-class.php:219
+msgid "State"
+msgstr "Provincia"
+
+#: includes/wcpcd-admin.php:23 includes/wcpcd-class.php:220
+msgid "City-District"
+msgstr "Cantón-Distrito"
+
+#: includes/wcpcd-admin.php:27 includes/wcpcd-class.php:75
+#: includes/wcpcd-class.php:221
+msgid "Choose a city"
+msgstr "Seleccione una ciudad"
+
+#: includes/wcpcd-class.php:96
+msgid "Choose a state"
+msgstr "Seleccione una provincia"
+
+#. translators: %1$s Plugin name, %2$s Open a tag, %3$s Close a tag
+#: wc-prov-cant-dist.php:49
+msgid "%1$s requires %2$sWooCommerce%3$s to be active."
+msgstr "%1$s requiere %2$sWooCommerce%3$s para esta activo."
