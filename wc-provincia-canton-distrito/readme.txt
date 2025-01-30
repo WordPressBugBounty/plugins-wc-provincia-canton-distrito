@@ -3,8 +3,8 @@ Contributors: keylorcr
 Donate link: https://www.paypal.me/keylorcr
 Tags: eCommerce, e-commerce, woocommerce, costa rica, costa rica states, provincias, canton, distrito, central america
 Requires at least: 4.7
-Tested up to: 6.4.2
-Stable tag: 1.5.0
+Tested up to: 6.7.1
+Stable tag: 1.5.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,12 @@ You can check if the file with locations is being loaded to your site, simply go
 8. Plugin settings
 
 == Changelog ==
+= 1.5.1 =
+* Update: Language loaded from init action in wcpcd_language_init
+* Fix: Initialization for class WC_PROV_CANT_DIST to prevent reported error for states in Checkout
+* Fix: WC validation removed to prevent reported error
+* Update: Check for compatibility WP 6.7.1 and WC 9.6.0
+
 = 1.5.0 =
 * Update: Check for compatibility with WC HPOS
 * New: Postal codes for new Districts Costa Rica based on CCR and TSE

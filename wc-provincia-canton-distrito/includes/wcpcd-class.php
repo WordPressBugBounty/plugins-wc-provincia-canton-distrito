@@ -2,10 +2,11 @@
 /**
  * WPCD Class
  * 
- * @version 1.5.0
+ * @version 1.5.1
  * @since 1.0.x
  */
-class WC_PROV_CANT_DIST {
+class WC_PROV_CANT_DIST
+{
 	public $id = '';
 	public $name = '';
 	public $title = '';
@@ -18,10 +19,28 @@ class WC_PROV_CANT_DIST {
 	public $wcpcd_set_empty_city_district = false;
 	public $wcpcd_set_empty_province = false;
 
-	public function __construct() {
-		// Check if WC is enable in the site
-		if ( !class_exists( 'WooCommerce' ) ) return;
+    /**
+     * Instance variable
+     *
+     * @var $instance The reference the *Singleton* instance of this class
+     */
+    private static $instance;
 
+    /**
+     * Returns the *Singleton* instance of this class.
+     *
+     * @return The|WC_PROV_CANT_DIST $instance The *Singleton* instance.
+     */
+    public static function get_instance()
+	{
+        if ( null === self::$instance ) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+	public function __construct()
+	{
 		$this->includes();
 
 		$this->id = 'wcpcd';
@@ -37,7 +56,7 @@ class WC_PROV_CANT_DIST {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'wcpcd_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'wcpcd_scripts' ) );
-		add_filter( 'woocommerce_states', array( $this, 'wcpcd_cr_states' ), 20 );
+		add_filter( 'woocommerce_states', array( $this, 'wcpcd_cr_states' ), 60 );
 
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'wcpcd_address_fields' ), 20 );
 
@@ -48,7 +67,8 @@ class WC_PROV_CANT_DIST {
 		add_action( 'wp_head', array( $this, 'wcpcd_hide_styles' ) );
 	}
 
-	public function includes() {
+	public function includes()
+	{
 		include_once WPCD_PLUGIN_PATH . '/includes/wcpcd-admin.php';
 	}
 
@@ -57,7 +77,8 @@ class WC_PROV_CANT_DIST {
 	 * 
 	 * @since 1.2.5
 	 */
-	private function wcpcd_locations_allowed() {
+	private function wcpcd_locations_allowed()
+	{
 		global $pagenow, $post;
 
 		$is_valid = ( is_cart() || is_checkout() || is_account_page() ) ? true : ( is_admin() && isset( $post->post_type ) && $post->post_type == 'shop_order' );
@@ -68,7 +89,8 @@ class WC_PROV_CANT_DIST {
 	/**
 	 * Get json data
 	 */
-	public function wcpcd_get_json_file() {
+	public function wcpcd_get_json_file()
+	{
 		$json_file = apply_filters('wcpcd_prov_cant_dist_json', WPCD_PLUGIN_DIR_URL . 'assets/js/prov-cant-dist.json');
 
 		return $json_file;
@@ -77,7 +99,8 @@ class WC_PROV_CANT_DIST {
 	/**
 	 * Load scripts
 	 */
-	public function wcpcd_scripts() {
+	public function wcpcd_scripts()
+	{
 		if ( $this->wcpcd_locations_allowed() ) {
 			$min = ( !$this->wcpcd_debug_js && !isset( $_GET['wcpcd_debug'] ) ) ? '.min' : '';
 
@@ -97,7 +120,8 @@ class WC_PROV_CANT_DIST {
 	/**
 	 * Populate CR States to Woocommerce states field
 	 */
-	public function wcpcd_get_provincias( $key = '' ) {
+	public function wcpcd_get_provincias( $key = '' )
+	{
 		$provincias = apply_filters( 'wcpcd_cr_states', array(
 			'SJ' => 'San José',
 			'AL' => 'Alajuela',
@@ -130,7 +154,8 @@ class WC_PROV_CANT_DIST {
 	/**
 	 * Load states to WC
 	 */
-	public function wcpcd_cr_states( $states ) {
+	public function wcpcd_cr_states( $states )
+	{
 		$states['CR'] = $this->wcpcd_get_provincias();
 
 		return $states;
@@ -144,7 +169,8 @@ class WC_PROV_CANT_DIST {
 	 * 
 	 * @return bool|array	Array of locations or false if file cannot be loaded
 	 */
-	public function wcpcd_get_provincia_canton_distrito() {
+	public function wcpcd_get_provincia_canton_distrito()
+	{
 		$json = $this->wcpcd_locations_from_settings();
 		
 		if ( ! $json && $this->wcpcd_file_exists( $this->json_data ) ) {
@@ -166,7 +192,8 @@ class WC_PROV_CANT_DIST {
 	 * 
 	 * @return bool|string	Text for locations or bool if file cannot be loaded
 	 */
-	public function wcpcd_file_exists( $file ) {
+	public function wcpcd_file_exists( $file )
+	{
 		$ssl_verify = false;
 		$data = wp_safe_remote_get( $file, array(
 			'sslverify' => $ssl_verify
@@ -199,7 +226,8 @@ class WC_PROV_CANT_DIST {
 	 * 
 	 * @return bool|array False if locations are loading from file. Array when locations are loading from settings
 	 */
-	public function wcpcd_locations_from_settings() {
+	public function wcpcd_locations_from_settings()
+	{
 		$json = false;
 
 		if ( !empty( $this->wcpcd_locations ) ) {
@@ -214,7 +242,8 @@ class WC_PROV_CANT_DIST {
 	 * Manage address field in checkout page
 	 * Valid fixing WC 3.5 checkout fields order bug
 	 */
-	private function wcpcd_order_fields( $fields, $main_key = '' ) {
+	private function wcpcd_order_fields( $fields, $main_key = '' )
+	{
 		$checkout_new_order = array();
 
 		foreach ( $fields as $key => $single_key ) {
@@ -230,7 +259,8 @@ class WC_PROV_CANT_DIST {
 		return $checkout_new_order;
 	}
 
-	public function wcpcd_address_fields( $fields ) {
+	public function wcpcd_address_fields( $fields )
+	{
 		if ( !$this->wcpcd_priority_override ) {
 			$fields['state']['label'] = apply_filters( 'wcpcd_state_field_label', __( 'State', 'wc-prov-cant-dist' ) );
 			$fields['city']['label'] = apply_filters( 'wcpcd_city_field_label', __( 'City-District', 'wc-prov-cant-dist' ) );
@@ -257,7 +287,8 @@ class WC_PROV_CANT_DIST {
 	/**
 	 * Settings page
 	 */		
-	private function wcpcd_fields() { 
+	private function wcpcd_fields()
+	{ 
 		$wcpcd_fields = array( 'wcpcd_priority_override', 'wcpcd_hide_zipcode', 'wcpcd_debug_js', 'wcpcd_set_empty_province', 'wcpcd_set_empty_city_district', 'wcpcd_locations' );
 		$custom_fields = apply_filters( 'wcpcd_register_custom_settings', array() );
 
@@ -268,17 +299,20 @@ class WC_PROV_CANT_DIST {
 		return $wcpcd_fields;
 	}
 
-	public function wcpcd_admin_page() {
+	public function wcpcd_admin_page()
+	{
 		add_options_page( 'WC Provincia-Canton-Distrito', 'WC Provincia-Canton-Distrito', 'manage_options', $this->id, array( $this, 'wcpcd_settings_page' ) );
 	}
 
-	public function wcpcd_register_settings() {
+	public function wcpcd_register_settings()
+	{
 		foreach ( $this->wcpcd_fields() as $wcpcd_field ) {
 			register_setting( 'wcpcd-plugin-settings', $wcpcd_field );
 		}
 	}
 
-	public function wcpcd_settings_page() {
+	public function wcpcd_settings_page()
+	{
 		?>
 		<div class="wrap">
 			<h1><?= $this->title; ?></h1>
@@ -299,7 +333,8 @@ class WC_PROV_CANT_DIST {
 	/**
 	 * Hides postcode field in shipping calculator
 	 */
-	public function wcpcd_hide_styles() {
+	public function wcpcd_hide_styles()
+	{
 		if ( $this->wcpcd_hide_zipcode && $this->wcpcd_locations_allowed() ) {
 			?>
 			<style type="text/css">
@@ -315,7 +350,8 @@ class WC_PROV_CANT_DIST {
 	/**
 	 * Add Settings action links
 	 */
-	public function wcpcd_links( $links ) {
+	public function wcpcd_links( $links )
+	{
 		$plugin_links = array(
 			'<a href="' . admin_url( 'admin.php?page=' . $this->id ) . '">' . __( 'Settings', 'wc-prov-cant-dist' ) . '</a>',
 		);
@@ -328,8 +364,10 @@ class WC_PROV_CANT_DIST {
 	 * Validate deprecated method
 	 * @version 1.2.3
 	 */
-	public function wpcd_get_provincias( $key ) {
+	public function wpcd_get_provincias( $key )
+	{
 		return $this->wcpcd_get_provincias( $key );
 	}
 }
 
+return WC_PROV_CANT_DIST::get_instance();

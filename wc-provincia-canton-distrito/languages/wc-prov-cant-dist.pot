@@ -1,17 +1,17 @@
-# Copyright (C) 2022 Keylor Mendoza A.
-# This file is distributed under the same license as the WC Provincia-Canton-Distrito plugin.
+# Copyright (C) 2025 Keylor Mendoza A.
+# This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: WC Provincia-Canton-Distrito 1.4.1\n"
+"Project-Id-Version: WC Provincia-Canton-Distrito 1.5.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-provincia-canton-distrito\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-06-24T06:35:13+00:00\n"
+"POT-Creation-Date: 2025-01-30T05:13:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wc-prov-cant-dist\n"
 
 #. Plugin Name of the plugin
@@ -23,7 +23,7 @@ msgid "https://keylormendoza.com/woocommerce/wc-provincia-canton-distrito/"
 msgstr ""
 
 #. Description of the plugin
-#: includes/wcpcd-class.php:15
+#: includes/wcpcd-class.php:49
 msgid "This plugin allows you to populate your custom states, cities, and postcodes for WooCommerce. It started working only for Costa Rica but now it is compatible with multi countries."
 msgstr ""
 
@@ -36,7 +36,7 @@ msgid "https://www.keylormendoza.com"
 msgstr ""
 
 #: includes/admin/wcpcd-settings.php:2
-#: includes/wcpcd-class.php:304
+#: includes/wcpcd-class.php:356
 msgid "Settings"
 msgstr ""
 
@@ -119,22 +119,22 @@ msgid "The locations couldn't be loaded to your site. Move the file %1$s from th
 msgstr ""
 
 #: includes/wcpcd-admin.php:16
-#: includes/wcpcd-class.php:219
+#: includes/wcpcd-class.php:265
 msgid "State"
 msgstr ""
 
 #: includes/wcpcd-admin.php:23
-#: includes/wcpcd-class.php:220
+#: includes/wcpcd-class.php:266
 msgid "City-District"
 msgstr ""
 
 #: includes/wcpcd-admin.php:27
-#: includes/wcpcd-class.php:75
-#: includes/wcpcd-class.php:221
+#: includes/wcpcd-class.php:114
+#: includes/wcpcd-class.php:267
 msgid "Choose a city"
 msgstr ""
 
-#: includes/wcpcd-class.php:96
+#: includes/wcpcd-class.php:136
 msgid "Choose a state"
 msgstr ""
 
