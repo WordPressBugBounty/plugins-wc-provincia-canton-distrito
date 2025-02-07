@@ -2,7 +2,7 @@
 /**
  * WPCD Class
  * 
- * @version 1.5.1
+ * @version 1.5.2
  * @since 1.0.x
  */
 class WC_PROV_CANT_DIST
@@ -370,4 +370,6 @@ class WC_PROV_CANT_DIST
 	}
 }
 
-return WC_PROV_CANT_DIST::get_instance();
+add_action( 'woocommerce_init', function() {
+	WC_PROV_CANT_DIST::get_instance();
+} );
