@@ -1,26 +1,30 @@
 === WC Provincia Canton Distrito ===
 Contributors: keylorcr
 Donate link: https://www.paypal.me/keylorcr
-Tags: eCommerce, e-commerce, woocommerce, costa rica, costa rica states, provincias, canton, distrito, central america
+Tags: states, cities, provincias, canton, distrito
 Requires at least: 4.7
-Tested up to: 6.7.1
-Stable tag: 1.5.2
+Tested up to: 6.7.2
+Stable tag: 1.5.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin allows you to populate your custom states, cities, and postcodes for WooCommerce. It started working only for Costa Rica but now it is compatible with multi countries.
+This plugin allows you to populate your custom states, cities, and postcodes for WooCommerce.
 
 == Description ==
-Manage your custom states, cities, and postcodes by countries from a .json file that can be moved from the plugin to your custom location.
+Manage your custom states, cities, and postcodes by countries from a .json file that it can be moved to your theme using hooks or managed them by the plugin settings.
 
 Available into My account, Shipping calculator form, and the Checkout.
 
+It started working only for Costa Rica but now it is compatible with multi countries.
+
+Check or request a custom PRO add-on [here](https://keylormendoza.com/pro-add-ons/)
 
 ### Features And Options:
 * Multicountry compatible.
 * Postcode loaded from the selected location.
 * Filters and actions are available.
 * Also available for admin orders edition
+* Shared locations for Ecuador, Guatemala, Peru and Nicaragua are available [here](https://keylormendoza.com/how-to/state-and-cities-locations/#wcpcd-locations).
 
 == Installation ==
 
@@ -61,6 +65,10 @@ You can check if the file with locations is being loaded to your site, simply go
 8. Plugin settings
 
 == Changelog ==
+= 1.5.3 =
+* New: Class WCPCD_Misc to handle Woo hooks and prevent incompatibility from main plugin class
+* Fix: Admin validation for compatibility to display locations dropdown in orders page
+
 = 1.5.2 =
 * Fix: WC initialization using hook woocommerce_init
 

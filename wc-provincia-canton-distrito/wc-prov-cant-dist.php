@@ -2,12 +2,12 @@
 /**
  * Plugin Name: WC Provincia-Canton-Distrito
  * Plugin URI: https://keylormendoza.com/woocommerce/wc-provincia-canton-distrito/
- * Description: This plugin allows you to populate your custom states, cities, and postcodes for WooCommerce. It started working only for Costa Rica but now it is compatible with multi countries.
- * Version: 1.5.2
+ * Description: This plugin allows you to populate your custom states, cities, and postcodes for WooCommerce.
+ * Version: 1.5.3
  * Requires at least: 4.7
- * Tested up to: 6.7.1
+ * Tested up to: 6.7.2
  * WC requires at least: 3.0
- * WC tested up to: 9.6.1
+ * WC tested up to: 9.6.2
  * Author: Keylor Mendoza A.
  * Author URI: https://www.keylormendoza.com
  * License: GPLv2
@@ -18,7 +18,7 @@
 if ( !defined( 'ABSPATH' ) ) { exit; }
 
 if ( !defined( 'WPCD_PLUGIN_VERSION' ) ) {
-	define( 'WPCD_PLUGIN_VERSION', '1.5.2' );
+	define( 'WPCD_PLUGIN_VERSION', '1.5.3' );
 }
 
 if ( !defined( 'WPCD_PLUGIN_FILE' ) ) {
@@ -61,6 +61,7 @@ function wcpcd_inactive_notice() {
 }
 add_action( 'admin_notices', 'wcpcd_inactive_notice' );
 
+include plugin_dir_path( __FILE__ ) . '/includes/wcpcd-misc.php';
 include plugin_dir_path( __FILE__ ) . '/includes/wcpcd-class.php';
 
 /**

@@ -56,9 +56,7 @@ class WC_PROV_CANT_DIST
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'wcpcd_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'wcpcd_scripts' ) );
-		add_filter( 'woocommerce_states', array( $this, 'wcpcd_cr_states' ), 60 );
-
-		add_filter( 'woocommerce_default_address_fields', array( $this, 'wcpcd_address_fields' ), 20 );
+		// add_filter( 'woocommerce_default_address_fields', array( $this, 'wcpcd_address_fields' ), 20 );
 
 		add_action( 'admin_menu', array( $this, 'wcpcd_admin_page' ) );
 		add_action( 'admin_init', array( $this, 'wcpcd_register_settings' ) );
@@ -75,15 +73,21 @@ class WC_PROV_CANT_DIST
 	/**
 	 * Plugin locations allowed
 	 * 
+	 * @version 1.5.3
 	 * @since 1.2.5
+	 * 
+	 * @return bool
 	 */
 	private function wcpcd_locations_allowed()
 	{
-		global $pagenow, $post;
-
-		$is_valid = ( is_cart() || is_checkout() || is_account_page() ) ? true : ( is_admin() && isset( $post->post_type ) && $post->post_type == 'shop_order' );
-
-		return $is_valid;
+		$screen = get_current_screen();
+		$order_screen_id = \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ? wc_get_page_screen_id( 'shop-order' ) : 'shop_order';
+		
+		if ( is_cart() || is_checkout() || is_account_page() || ( !is_null( $screen ) && $screen->id == $order_screen_id ) ) {
+			return true;
+		}
+		
+		return false;
 	}
 
 	/**
@@ -149,16 +153,6 @@ class WC_PROV_CANT_DIST
 		}
 
 		return $provincias;
-	}
-
-	/**
-	 * Load states to WC
-	 */
-	public function wcpcd_cr_states( $states )
-	{
-		$states['CR'] = $this->wcpcd_get_provincias();
-
-		return $states;
 	}
 
 	/**
@@ -236,52 +230,6 @@ class WC_PROV_CANT_DIST
 		}
 
 		return $json;
-	}
-
-	/**
-	 * Manage address field in checkout page
-	 * Valid fixing WC 3.5 checkout fields order bug
-	 */
-	private function wcpcd_order_fields( $fields, $main_key = '' )
-	{
-		$checkout_new_order = array();
-
-		foreach ( $fields as $key => $single_key ) {
-			$checkout_new_order[$key] = $fields[$key];
-			if ( preg_match( '/country/', $key ) ) {
-				$checkout_new_order[$main_key . 'state'] = $fields[$main_key . 'state'];
-				$checkout_new_order[$main_key . 'city'] = $fields[$main_key . 'city'];
-				$checkout_new_order[$main_key . 'address_1'] = $fields[$main_key . 'address_1'];
-				$checkout_new_order[$main_key . 'address_2'] = $fields[$main_key . 'address_2'];
-			}
-		}
-
-		return $checkout_new_order;
-	}
-
-	public function wcpcd_address_fields( $fields )
-	{
-		if ( !$this->wcpcd_priority_override ) {
-			$fields['state']['label'] = apply_filters( 'wcpcd_state_field_label', __( 'State', 'wc-prov-cant-dist' ) );
-			$fields['city']['label'] = apply_filters( 'wcpcd_city_field_label', __( 'City-District', 'wc-prov-cant-dist' ) );
-			$fields['city']['placeholder'] = apply_filters( 'wcpcd_city_field_placeholder', __( 'Choose a city', 'wc-prov-cant-dist' ) );
-			$fields['city']['class'] = array( 'city_select', 'input-text' );
-	
-			// Set priority 40+, after country field
-			$fields['state']['priority'] = 42;
-			$fields['city']['priority'] = 43;
-			$fields['address_1']['priority'] = 44;
-			$fields['address_2']['priority'] = 45;
-
-			/* Fix WC 3.5 */
-			$fields = $this->wcpcd_order_fields( $fields );
-		}
-
-		if ( $this->wcpcd_hide_zipcode ) {
-			$fields['postcode']['class'] = array( 'hide-zipcode' );
-		}
-
-		return $fields;
 	}
 
 	/**
@@ -370,6 +318,11 @@ class WC_PROV_CANT_DIST
 	}
 }
 
+function wcpcd() {
+	return WC_PROV_CANT_DIST::get_instance();
+}
+
 add_action( 'woocommerce_init', function() {
-	WC_PROV_CANT_DIST::get_instance();
+	// WC_PROV_CANT_DIST::get_instance();
+	WCPCD();
 } );
