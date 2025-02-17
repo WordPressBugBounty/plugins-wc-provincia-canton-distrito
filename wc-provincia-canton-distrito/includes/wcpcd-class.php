@@ -73,17 +73,23 @@ class WC_PROV_CANT_DIST
 	/**
 	 * Plugin locations allowed
 	 * 
-	 * @version 1.5.3
+	 * @version 1.5.4
 	 * @since 1.2.5
 	 * 
 	 * @return bool
 	 */
 	private function wcpcd_locations_allowed()
 	{
-		$screen = get_current_screen();
-		$order_screen_id = \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ? wc_get_page_screen_id( 'shop-order' ) : 'shop_order';
+		$screen = null;
+		$is_order_screen = false;
+
+		if ( is_admin() ) {
+			$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+			$order_screen_id = \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ? wc_get_page_screen_id( 'shop-order' ) : 'shop_order';
+			$is_order_screen = (bool) ( !is_null( $screen ) && $screen->id == $order_screen_id );
+		}
 		
-		if ( is_cart() || is_checkout() || is_account_page() || ( !is_null( $screen ) && $screen->id == $order_screen_id ) ) {
+		if ( is_cart() || is_checkout() || is_account_page() || $is_order_screen ) {
 			return true;
 		}
 		
